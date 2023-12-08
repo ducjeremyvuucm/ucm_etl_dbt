@@ -1,6 +1,6 @@
 version: 2
 
 models:
-  - name: stg_falcon__user
+  - name: stg_spendesk__payables
     config:
       materialized: view
