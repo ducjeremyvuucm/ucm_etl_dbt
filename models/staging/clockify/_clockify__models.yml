@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: stg_clockify__time_entries
+    config:
+      materialized: view

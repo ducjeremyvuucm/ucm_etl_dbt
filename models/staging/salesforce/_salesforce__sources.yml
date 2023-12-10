@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: salesforce
+    database: reporting-340722
+    schema: sources
+    tables:
+      - name: Project__c
+        name: ONB2__Invoice__c
