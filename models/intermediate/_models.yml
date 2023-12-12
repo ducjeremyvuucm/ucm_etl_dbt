@@ -30,3 +30,7 @@ models:
   - name: int_spend_spendesk_airport
     config:
       materialized: view
+
+  - name: int_airport_clockify
+    config:
+      materialized: view

@@ -17,7 +17,11 @@ with
 
     tags as (select * from {{ ref("stg_clockify__tags") }}),
     tasks as (select * from {{ ref("stg_clockify__tasks") }}),
-    users as (select * from {{ ref("stg_clockify__users") }}),
+    users as (
+        select user_id, user_name, user_email
+        from {{ ref("stg_clockify__users") }}
+        group by user_id, user_name, user_email
+    ),
     projects as (select * from {{ ref("stg_clockify__projects") }}),
     tags_unnested as (  -- unnesting the tags in tag_ids list
         select tu1.time_entry_id, json_extract_scalar(tag_id) as tag_id
@@ -35,10 +39,17 @@ with
             teg.time_entry_id,
             tujt.tag_names,
             case
-                when regexp_extract(tujt.tag_names, 'N\\d+') is null
-                then "G"
-                else regexp_extract(tujt.tag_names, 'N\\d+')
-            end as tags,
+                when array_length(regexp_extract_all(tujt.tag_names, 'N\\d+')) = 0
+                then 'G'
+                else array_to_string(regexp_extract_all(tujt.tag_names, 'N\\d+'), ', ')
+            end as ucm_project_id,
+
+            case
+                when array_length(regexp_extract_all(tujt.tag_names, 'C\\d+')) = 0
+                then 'G'
+                else array_to_string(regexp_extract_all(tujt.tag_names, 'C\\d+'), ', ')
+            end as ucm_customer_id,
+
             users.user_name,
             users.user_email,
             tasks.task_name,
@@ -69,12 +80,20 @@ with
                 2
             ) as time_duration_decimal,
             teg.time_start,
-            teg.time_end
+            teg.time_end,
+            cast(teg.time_start as date) as time_entry_date
         from time_entries_grouped teg
         left join tags_unnested_join_tags tujt on tujt.time_entry_id = teg.time_entry_id
         left join tasks on tasks.task_id = teg.task_id
         left join users on users.user_id = teg.user_id
         left join projects on projects.project_id = teg.project_id
+    ),
+    test as (
+        select teg.time_entry_id, tujt.tag_names,
+        from time_entries_grouped teg
+        left join tags_unnested_join_tags tujt on tujt.time_entry_id = teg.time_entry_id
+        left join tasks on tasks.task_id = teg.task_id
+        left join users on users.user_id = teg.user_id
     )
 
 select *
