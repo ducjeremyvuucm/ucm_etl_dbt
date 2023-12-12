@@ -1,16 +1,16 @@
 version: 2
 
 sources:
-  - name: salesforce
+  - name: clockify
     database: reporting-340722
     schema: sources
     tables:
-      - name: clockify_clients
-        name: clockify_projects
-        name: clockify_tags
-        name: clockify_tasks
-        name: clockify_time_entries
-        name: clockify_user_groups
-        name: clockify_users
+      - name: clockify_clients      
+      - name: clockify_projects
+      - name: clockify_tags
+      - name: clockify_tasks
+      - name: clockify_time_entries
+      - name: clockify_user_groups
+      - name: clockify_users
 
     

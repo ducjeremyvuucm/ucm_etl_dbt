@@ -5,5 +5,5 @@ sources:
     database: reporting-340722
     schema: sources
     tables:
-      - name: falcon_users
-      - name: falcon_projects
+    
+      - name: spendesk_payables

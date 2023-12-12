@@ -4,3 +4,6 @@ models:
   - name: stg_clockify__time_entries
     config:
       materialized: view
+  - name: stg_clockify__tasks
+    config:
+      materialized: view
