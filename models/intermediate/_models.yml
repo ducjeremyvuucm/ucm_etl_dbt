@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: int_clockify__time_entries_reduced
+    config:
+      materialized: view
+    columns:
+      - name: id
+
+      - name: tag_ids
+
+      - name: task_id
+
+      - name: user_id
+
+      - name: project_id
+
+      - name: description
+
+      - name: time_duration
+
+      - name: time_start
+
+      - name: time_end
+
+    test:
+      - dbt_utils.fewer_rows_than:
+          compare_model: ref('stg_clockify__time_entries')
+
+  - name: int_airport_spend
+    config:
+      materialized: view

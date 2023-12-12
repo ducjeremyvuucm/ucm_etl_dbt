@@ -8,5 +8,5 @@ ucm:
       method: oauth
       project: reporting-340722
       dataset: sources # You can also use "schema" here
-      threads: 4 # Must be a value of 1 or greater 
+      threads: 4 # Must be a value of 1 or greater
 #      [OPTIONAL_CONFIG](#optional-configurations): VALUEdbt

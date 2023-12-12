@@ -32,5 +32,4 @@ models:
   ucm:
     # Config indicated by + and applies to all files under models/example/
     staging:
-      +enabled: true
       +materialized: view
