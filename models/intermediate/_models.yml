@@ -27,6 +27,6 @@ models:
       - dbt_utils.fewer_rows_than:
           compare_model: ref('stg_clockify__time_entries')
 
-  - name: int_airport_spend
+  - name: int_spend_spendesk_airport
     config:
       materialized: view

@@ -13,18 +13,18 @@
         {% set seconds = duration.split("S")[0].split("M")[-1] | int %}
     {% endif %}
 
-    {{ return(hours, minutes, seconds) }}
+    {{ return({"hours": hours, "minutes": minutes, "seconds": seconds}) }}
 {% endmacro %}
 
 {% macro duration_to_decimal_hours(duration) %}
-    {% set hours, minutes, seconds = parse_duration(duration) %}
-    {{ return(hours + minutes / 60.0 + seconds / 3600.0) }}
+    {% set duration_parts = parse_duration(duration) %}
+    {% set hours = duration_parts.hours | float %}  -- Convert to float
+    {% set minutes = duration_parts.minutes | float %}  -- Convert to float
+    {% set seconds = duration_parts.seconds | float %}  -- Convert to float
+    {% set decimal_hours = hours + (minutes / 60.0) + (seconds / 3600.0) %}
+    {{ return(decimal_hours | float) }}  -- Ensure the final result is a float
 {% endmacro %}
 
-{% macro get_individual_time_components(duration) %}
-    {% set hours, minutes, seconds = parse_duration(duration) %}
-    {{ return(hours, minutes, seconds) }}
-{% endmacro %}
 
 {% macro convert_timestamp_to_unix_to_datetime(timestamp_column) %}
     datetime(timestamp_seconds(unix_seconds({{ timestamp_column }})))
