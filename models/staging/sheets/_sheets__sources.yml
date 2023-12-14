@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: Sheets
+    database: reporting-340722
+    schema: sources
+    tables:
+      - name: sheets_clockify_21_23_q3_Detailed_Report
+      - name: sheets_google_ads_data
+      - name: sheets_pipedrive_history_Sheet1

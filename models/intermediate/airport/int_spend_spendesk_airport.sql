@@ -1,8 +1,8 @@
 with
 airport_spend as (
     select
-        invoice_date as invoice_date,
-        local_amount as local_amount
+        local_amount as local_amount,
+        CAST(invoice_date as date) as invoice_date
     from sources.stg_spendesk__payables
     where cost_center_name in ('BER - 2211', 'MUC - 2222', 'HAM - 2244')
 )
