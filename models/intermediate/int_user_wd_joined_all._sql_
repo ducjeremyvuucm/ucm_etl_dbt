@@ -1,0 +1,76 @@
+/* with
+user_job_dates as (
+    select * from {{ ref('stg_falcon__user_job_dates') }}
+),
+
+user_job_payrolls as (
+    select * from {{ ref('stg_falcon__user_job_payrolls') }}
+),
+
+user_job_payroll_moneys as (
+    select * from {{ ref('stg_falcon__user_job_payroll_moneys') }}
+),
+
+job_applications as (
+    select * from {{ ref('stg_falcon__job_applications') }}
+),
+
+users as (
+    select * from {{ ref('stg_falcon__users') }}
+),
+
+jobs as (
+    select * from {{ ref('stg_falcon__jobs') }}
+),
+
+projects as (
+    select * from {{ ref('stg_falcon__projects') }}
+),
+
+admins as (
+    select * from {{ ref('stg_falcon__admins') }}
+),
+
+companies as (
+    select * from {{ ref('stg_falcon__companies') }}
+),
+
+user_job_dates_joined as (
+    select
+        ujd.user_job_date_id,
+        ja.job_application_id,
+        u.user_id,
+        j.job_id,
+        p.project_id,
+        c.company_id,
+        ujd.status_id,
+        ujd.checkin_time,
+        ujd.checkout_time,
+        ujpm.
+
+        a.first_name || ' ' || a.last_name as manager
+
+
+    from
+        user_job_dates as ujd
+    left join
+        user_job_payrolls as ujp
+        on ujd.user_job_date_id = ujp.user_job_date_id
+    left join
+        user_job_payroll_moneys as ujpm
+        on ujp.user_job_payroll_money_id = ujpm.user_job_payroll_money_id
+    left join
+        job_applications as ja
+        on ujd.job_application_id = ja.job_application_id
+    left join users as u on ja.user_id = u.user_id
+    left join
+        jobs as j
+        on ja.job_id = j.job_id
+    left join projects as p on j.project_id = p.project_id
+    left join admins as a on p.admin_id = a.admin_id
+    left join companies as c on p.company_id = c.company_id
+)
+
+select * from user_job_dates_joined
+limit 10
+ */

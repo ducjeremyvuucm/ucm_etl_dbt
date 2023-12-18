@@ -1,26 +1,37 @@
-with jobs as (
+with
+base_jobs as (
+    select * from {{ ref('base_falcon__jobs') }}
+),
+
+base_job_statuses as (
+    select * from {{ ref('base_falcon__job_statuses') }}
+),
+
+jobs as (
 
     select
-        id as job_id,
-        project_id as project_id,
-        title as job_title,
-        wage as job_wage,
-        price as job_price,
-        is_flex as is_flex,
-        status_id as status_id,
-        created_at as created_at,
-        updated_at as updated_at,
-        description as description,
-        job_type_id as job_type_id,
-        slots_number as slots_number,
-        first_shift_at as first_shift_at,
-        last_shift_at as last_shift_at,
-        booking_deadline_date as deadline_at
+        j.job_id,
+        j.project_id,
+        j.job_title,
+        j.job_wage,
+        j.job_price,
+        j.is_flex,
+        j.status_id as job_status_id,
+        js.job_status_name,
+        j.created_at,
+        j.updated_at,
+        j.description,
+        j.job_type_id,
+        j.slots_number,
+        j.first_shift_at,
+        j.last_shift_at,
+        j.deadline_at
 
 
 
     from
-        sources.falcon_jobs
+        base_jobs as j
+    left join base_job_statuses as js on j.status_id = js.job_status_id
 )
 
 select * from jobs

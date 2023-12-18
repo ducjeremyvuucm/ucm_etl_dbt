@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: stg_falcon__admins
+  - name: stg_falcon__user_job_dates
+  - name: stg_falcon__user_job_payrolls
+  - name: stg_falcon__user_job_payroll_moneys
+  - name: stg_falcon__users

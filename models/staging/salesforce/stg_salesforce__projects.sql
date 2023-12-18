@@ -1,5 +1,3 @@
-# fmt: off
-
 with
     projects as (
         select
@@ -28,8 +26,9 @@ with
 
 
 
-        from sources.Project__c
+        from {{ source('sources','salesforce_Project__c') }}
     )
 
 select *
 from projects
+

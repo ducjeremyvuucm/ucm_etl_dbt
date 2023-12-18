@@ -1,0 +1,36 @@
+version: 2
+
+sources:
+  - name: sources
+    database: reporting-340722
+    schema: sources
+    tables:
+      - name: clockify_clients
+      - name: clockify_projects
+      - name: clockify_tags
+      - name: clockify_tasks
+      - name: clockify_time_entries
+      - name: clockify_user_groups
+      - name: clockify_users
+      - name: falcon_admins
+      - name: falcon_companies
+      - name: falcon_job_application_statuses
+      - name: falcon_job_applications
+      - name: falcon_job_dates
+      - name: falcon_job_statuses
+      - name: falcon_jobs
+      - name: falcon_project_statuses
+      - name: falcon_projects
+      - name: falcon_user_job_date_statuses
+      - name: falcon_user_job_dates
+      - name: falcon_user_job_payroll_moneys
+      - name: falcon_user_job_payrolls
+      - name: falcon_user_statuses
+      - name: falcon_users
+      - name: salesforce_ONB2__Invoice__c
+      - name: salesforce_Project__c
+      - name: seed_airport_cost_hour_emp
+      - name: sheets_clockify_21_23_q3_detailed_report
+      - name: sheets_google_ads_data
+      - name: sheets_pipedrive_history_sheet1
+      - name: spendesk_payables

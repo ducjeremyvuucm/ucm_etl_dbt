@@ -1,20 +1,34 @@
-with projects as (
+with
+base_projects as (
+    select * from {{ ref('base_falcon__projects') }}
+),
+
+base_project_statuses as (
+    select * from {{ ref('base_falcon__project_statuses') }}
+),
+
+projects as (
     select
-        id as project_id,
-        name as project_name,
-        company_id as company_id,
-        status_id as project_status_id,
-        manager_id as admin_id,
-        team_id as team_id,
-        type_id as project_type_id,
-        description as description,
-        start_date as start_date,
-        end_date as end_date,
-        created_at as created_at,
-        updated_at as updated_at
+        p.project_id,
+        p.project_name,
+        p.company_id,
+        p.project_status_id,
+        ps.project_status_name,
+        p.admin_id,
+        p.team_id,
+        p.project_type_id,
+        p.description,
+        p.start_date,
+        p.end_date,
+        p.created_at,
+        p.updated_at
 
     from
-        sources.falcon_projects
+        base_projects as p
+    left join
+        base_project_statuses as ps
+        on p.project_status_id = ps.project_status_id
 )
 
 select * from projects
+--limit 10

@@ -1,13 +1,10 @@
 # fmt: off
 
 with invoices as (
-  select
-    id as invoice_id
+    select id as invoice_id
 
-  from
-    sources.ONB2__Invoice__c
-
+    from {{ source('sources','salesforce_ONB2__Invoice__c') }}
 )
 
 select * from invoices
-limit 10
+--limit 10

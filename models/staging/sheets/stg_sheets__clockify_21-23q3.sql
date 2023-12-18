@@ -12,7 +12,8 @@ with clockify_old as (
         'End_Time' as end_time
 
     from
-        sources.sheets_clockify_21_23_q3_detailed_report
+        {{ source('sources','sheets_clockify_21_23_q3_detailed_report') }}
+
 )
 
 select * from clockify_old
