@@ -19,6 +19,9 @@ sources:
       - name: falcon_job_dates
       - name: falcon_job_statuses
       - name: falcon_jobs
+        meta:
+          dagster:
+            asset_key: ["falcon_jobs"]
       - name: falcon_project_statuses
       - name: falcon_projects
       - name: falcon_user_job_date_statuses
