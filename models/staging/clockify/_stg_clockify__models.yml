@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_clockify__projects
+    meta:
+      dagster:
+        group: clock
+  - name: stg_clockify__time_entries
+    meta:
+      dagster:
+        group: clock
+  - name: stg_clockify__users
+    meta:
+      dagster:
+        group: clock
+  - name: stg_clockify__tags
+    meta:
+      dagster:
+        group: clock
+  - name: stg_clockify__tasks
+    meta:
+      dagster:
+        group: clock

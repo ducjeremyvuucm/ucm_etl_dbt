@@ -2,7 +2,66 @@ version: 2
 
 models:
   - name: stg_falcon__admins
+    meta:
+      dagster:
+        group: falco
   - name: stg_falcon__user_job_dates
+    meta:
+      dagster:
+        group: falco
   - name: stg_falcon__user_job_payrolls
+    meta:
+      dagster:
+        group: falco
   - name: stg_falcon__user_job_payroll_moneys
+    meta:
+      dagster:
+        group: falco
   - name: stg_falcon__users
+    meta:
+      dagster:
+        group: falco
+  - name: stg_falcon__companies
+    meta:
+      dagster:
+        group: falco
+  - name: stg_falcon__job_applications
+    meta:
+      dagster:
+        group: falco
+  - name: stg_falcon__job_dates
+    meta:
+      dagster:
+        group: falco
+  - name: stg_falcon__jobs
+    meta:
+      dagster:
+        group: falco
+  - name: stg_falcon__projects
+    meta:
+      dagster:
+        group: falco
+  - name: base_falcon__job_application_status
+    meta:
+      dagster:
+        group: falco
+  - name: base_falcon__job_applications
+    meta:
+      dagster:
+        group: falco
+  - name: base_falcon__job_statuses
+    meta:
+      dagster:
+        group: falco
+  - name: base_falcon__jobs
+    meta:
+      dagster:
+        group: falco
+  - name: base_falcon__project_statuses
+    meta:
+      dagster:
+        group: falco
+  - name: base_falcon__projects
+    meta:
+      dagster:
+        group: falco

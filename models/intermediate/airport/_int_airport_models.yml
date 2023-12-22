@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: int_airport_clockify_pm
+    meta:
+      dagster:
+        group: int_airport
+  - name: int_airport_clockify_staff
+    meta:
+      dagster:
+        group: int_airport
+  - name: int_airport_projects
+    meta:
+      dagster:
+        group: int_airport
+  - name: int_spend_spendesk_airport
+    meta:
+      dagster:
+        group: int_airport
