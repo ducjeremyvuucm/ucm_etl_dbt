@@ -41,7 +41,7 @@ models:
     meta:
       dagster:
         group: falco
-  - name: base_falcon__job_application_status
+  - name: base_falcon__job_application_statuses
     meta:
       dagster:
         group: falco
